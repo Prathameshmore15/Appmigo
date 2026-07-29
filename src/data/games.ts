@@ -13,6 +13,7 @@ export interface Game {
   playStoreUrl: string
   packageName: string
   status?: 'published' | 'upcoming'
+  screenshots?: string[]
 }
 
 export const games: Game[] = [
@@ -31,6 +32,15 @@ export const games: Game[] = [
     playStoreUrl: 'https://play.google.com/store/apps/details?id=com.appmigo.speedmemorychallenge',
     packageName: 'com.appmigo.speedmemorychallenge',
     status: 'published',
+    screenshots: [
+      'https://play-lh.googleusercontent.com/r7oQYMaTO7OGhgCUymIa5zFsH-Ib0jkF_9TVvGugQsRE3ePfEqeLl_mj3aUzOAA7aDOXrC8bc-kLrPWHFgsJZQ=w526-h296-rw',
+      'https://play-lh.googleusercontent.com/FxNfDswYQNFU3SKJIIxl_hDQmsinhnB7UNlL8rYgZozG8-_2eaA_dkrO7KJ0hib2-YIzX8zczsIBFtk_oyPuW9c=w526-h296-rw',
+      'https://play-lh.googleusercontent.com/4A5N6LFsvFYYGsW0ltvowXHREZJk9hPB4G2qIDe6J6hKoAr4Pbqu8MkblAmnr17S1loUQ95T1kUONMUNwDfiVQ=w526-h296-rw',
+      'https://play-lh.googleusercontent.com/CcmfFC7sOum3LfIm_YAyxScK2iRvsJar0f2bxl1Uo9oW6rfpIJiLLn7N2oC7OqsOi_6lPbAa9sEpGydfi-JC9Q=w526-h296-rw',
+      'https://play-lh.googleusercontent.com/akrJbZ13sHOiKijY62PbeBa9U4CPV4a2AHIrZVvpzO1ontVtlpF0v63i_UdQ9lkEcGHc4YKW3zrPmDedHMD0=w526-h296-rw',
+      'https://play-lh.googleusercontent.com/6ee00UIYsuLXdB3UpAQhrMR9J9MYWZJnmLTGmyAbGmuPZKDId9GmHpHWL7VvYLO17-8qsoHVsvG1TyCBVKPdrw=w526-h296-rw',
+      'https://play-lh.googleusercontent.com/cn7Ps2VWXAwuG5aXMRCIJBY_ExWJD9fcx5pbIp1WyAiYuPfRC3r1qinXzWGr07dLSR5QDQUm8BAHljwiz2Sw4w=w526-h296-rw',
+    ],
   },
   {
     id: 'tile-debt',

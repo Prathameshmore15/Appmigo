@@ -47,9 +47,26 @@ export default async function GameDetailPage({ params }: PageProps) {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
-          <div className="aspect-video rounded-xl bg-gradient-to-br from-primary/20 via-accent/10 to-primary/5 flex items-center justify-center border">
-            <img src="/appmigo-icon.svg" alt="" className="h-24 w-24 opacity-20" />
-          </div>
+          {game.screenshots && game.screenshots.length > 0 ? (
+            <div className="space-y-4">
+              <div className="aspect-video rounded-xl overflow-hidden border">
+                <img src={game.screenshots[0]} alt={`${game.title} screenshot`} className="w-full h-full object-cover" />
+              </div>
+              {game.screenshots.length > 1 && (
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                  {game.screenshots.slice(1, 4).map((screenshot, i) => (
+                    <div key={i} className="aspect-video rounded-lg overflow-hidden border">
+                      <img src={screenshot} alt={`${game.title} screenshot ${i + 2}`} className="w-full h-full object-cover" />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="aspect-video rounded-xl bg-gradient-to-br from-primary/20 via-accent/10 to-primary/5 flex items-center justify-center border">
+              <img src="/appmigo-icon.svg" alt="" className="h-24 w-24 opacity-20" />
+            </div>
+          )}
 
           <div>
             <h1 className="font-heading text-3xl sm:text-4xl font-bold">{game.title}</h1>
