@@ -5,12 +5,13 @@ import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { CheckCircle, Mail, Clock, MessageCircle } from 'lucide-react'
+import { CheckCircle, Mail, Clock, MessageCircle, HelpCircle, Bug, Trash2, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Select } from '@/components/ui/select'
 import { Card, CardContent } from '@/components/ui/card'
+import Link from 'next/link'
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Enter your name'),
@@ -112,13 +113,49 @@ export default function ContactPage() {
           </Card>
           <Card>
             <CardContent className="p-6">
-              <h3 className="font-heading font-semibold mb-2">Before You Contact</h3>
-              <ul className="space-y-1.5 text-sm text-muted-foreground">
-                <li className="flex items-start gap-2">• Check our <a href="/faq" className="text-primary hover:underline">FAQ</a> for quick answers</li>
-                <li className="flex items-start gap-2">• Try our <a href="/support/ai" className="text-primary hover:underline">AI Chat</a> for instant help</li>
-                <li className="flex items-start gap-2">• For bugs, use the <a href="/support/bug-report" className="text-primary hover:underline">Bug Report</a> form</li>
-                <li className="flex items-start gap-2">• For account deletion, use the <a href="/account-deletion" className="text-primary hover:underline">Account Deletion</a> page</li>
-              </ul>
+              <h3 className="font-heading font-semibold mb-4">Before You Contact</h3>
+              <div className="space-y-3">
+                <Link href="/faq" className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors group">
+                  <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                    <HelpCircle className="h-5 w-5 text-primary" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-medium text-sm">Check FAQ</p>
+                    <p className="text-xs text-muted-foreground">Quick answers to common questions</p>
+                  </div>
+                  <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                </Link>
+                <Link href="/support/ai" className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors group">
+                  <div className="h-10 w-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+                    <MessageCircle className="h-5 w-5 text-accent" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-medium text-sm">AI Chat</p>
+                    <p className="text-xs text-muted-foreground">24/7 instant help</p>
+                  </div>
+                  <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                </Link>
+                <Link href="/support/bug-report" className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors group">
+                  <div className="h-10 w-10 rounded-lg bg-destructive/10 flex items-center justify-center shrink-0">
+                    <Bug className="h-5 w-5 text-destructive" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-medium text-sm">Bug Report</p>
+                    <p className="text-xs text-muted-foreground">Report issues with your game</p>
+                  </div>
+                  <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                </Link>
+                <Link href="/account-deletion" className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors group">
+                  <div className="h-10 w-10 rounded-lg bg-warning/10 flex items-center justify-center shrink-0">
+                    <Trash2 className="h-5 w-5 text-warning" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-medium text-sm">Account Deletion</p>
+                    <p className="text-xs text-muted-foreground">Request data removal</p>
+                  </div>
+                  <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                </Link>
+              </div>
             </CardContent>
           </Card>
         </div>
