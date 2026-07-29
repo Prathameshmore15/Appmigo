@@ -55,12 +55,18 @@ export default async function GameDetailPage({ params }: PageProps) {
             <h1 className="font-heading text-3xl sm:text-4xl font-bold">{game.title}</h1>
             <div className="flex flex-wrap items-center gap-3 mt-3">
               <Badge variant="primary">{game.genre}</Badge>
-              <div className="flex items-center gap-1 text-sm">
-                <Star className="h-4 w-4 fill-warning text-warning" />
-                <span className="font-medium">{game.rating}</span>
-              </div>
-              <span className="text-sm text-muted-foreground">v{game.version}</span>
-              <span className="text-sm text-muted-foreground">Released {game.releaseDate}</span>
+              {game.status === 'upcoming' ? (
+                <Badge variant="accent">Coming Soon</Badge>
+              ) : (
+                <>
+                  <div className="flex items-center gap-1 text-sm">
+                    <Star className="h-4 w-4 fill-warning text-warning" />
+                    <span className="font-medium">{game.rating}</span>
+                  </div>
+                  <span className="text-sm text-muted-foreground">v{game.version}</span>
+                  <span className="text-sm text-muted-foreground">Released {game.releaseDate}</span>
+                </>
+              )}
             </div>
             <p className="mt-4 text-muted-foreground leading-relaxed">{game.longDescription}</p>
           </div>
@@ -105,26 +111,35 @@ export default async function GameDetailPage({ params }: PageProps) {
             <CardContent className="p-6 space-y-4">
               <h3 className="font-heading font-semibold">Quick Actions</h3>
               <div className="space-y-2">
-                <Link href={`/support/bug-report`}>
-                  <Button variant="secondary" className="w-full justify-start cursor-pointer">
-                    <BugPlay className="h-4 w-4" /> Report a Bug
-                  </Button>
-                </Link>
-                <Link href="/faq">
-                  <Button variant="secondary" className="w-full justify-start cursor-pointer">
-                    <HelpCircle className="h-4 w-4" /> View FAQ
-                  </Button>
-                </Link>
-                <Link href="/support/ai">
-                  <Button variant="secondary" className="w-full justify-start cursor-pointer">
-                    <MessageCircleMore className="h-4 w-4" /> Get AI Help
-                  </Button>
-                </Link>
-                <a href={game.playStoreUrl} target="_blank" rel="noopener noreferrer">
-                  <Button className="w-full cursor-pointer">
-                    <ExternalLink className="h-4 w-4" /> View on Google Play
-                  </Button>
-                </a>
+                {game.status === 'upcoming' ? (
+                  <div className="text-center py-4">
+                    <Badge variant="accent" className="text-sm">Coming Soon</Badge>
+                    <p className="text-sm text-muted-foreground mt-2">This game is under development</p>
+                  </div>
+                ) : (
+                  <>
+                    <Link href={`/support/bug-report`}>
+                      <Button variant="secondary" className="w-full justify-start cursor-pointer">
+                        <BugPlay className="h-4 w-4" /> Report a Bug
+                      </Button>
+                    </Link>
+                    <Link href="/faq">
+                      <Button variant="secondary" className="w-full justify-start cursor-pointer">
+                        <HelpCircle className="h-4 w-4" /> View FAQ
+                      </Button>
+                    </Link>
+                    <Link href="/support/ai">
+                      <Button variant="secondary" className="w-full justify-start cursor-pointer">
+                        <MessageCircleMore className="h-4 w-4" /> Get AI Help
+                      </Button>
+                    </Link>
+                    <a href={game.playStoreUrl} target="_blank" rel="noopener noreferrer">
+                      <Button className="w-full cursor-pointer">
+                        <ExternalLink className="h-4 w-4" /> View on Google Play
+                      </Button>
+                    </a>
+                  </>
+                )}
               </div>
             </CardContent>
           </Card>

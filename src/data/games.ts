@@ -12,6 +12,7 @@ export interface Game {
   imageUrl: string
   playStoreUrl: string
   packageName: string
+  status?: 'published' | 'upcoming'
 }
 
 export const games: Game[] = [
@@ -29,6 +30,7 @@ export const games: Game[] = [
     imageUrl: '/images/game-speed-memory.svg',
     playStoreUrl: 'https://play.google.com/store/apps/details?id=com.appmigo.speedmemorychallenge',
     packageName: 'com.appmigo.speedmemorychallenge',
+    status: 'published',
   },
   {
     id: 'tile-debt',
@@ -36,14 +38,15 @@ export const games: Game[] = [
     description: 'Strategic casual puzzle game where you clear tiles to pay off financial liabilities.',
     longDescription: 'Clear matching rows and tile sets to pay off financial liabilities before the board fills up in this strategic grid puzzle.\n\nFeatures:\n• Strategic Grid Gameplay: Clear matching rows and tile sets to pay off financial liabilities before the board fills up.\n• Game Modes: Includes competitive timed modes and an Interest-Free Relaxed Mode for casual play.\n• Visual & Audio Effects: High-definition neon particle effects and low-latency Bluetooth audio integration.\n• Cloud Sync: Automated local persistence with optional cloud sync for high scores and user stats.',
     genre: 'Casual Puzzle',
-    rating: 4.5,
+    rating: 0,
     version: '2.1.0',
-    releaseDate: '2024',
+    releaseDate: 'Coming Soon',
     developer: 'Appmigo',
     features: ['Strategic Grid Gameplay', 'Multiple Game Modes', 'HD Visual Effects', 'Cloud Sync', 'Offline Play'],
     imageUrl: '/images/game-tile-debt.svg',
     playStoreUrl: '#',
     packageName: 'com.appmigo.tiledebt',
+    status: 'upcoming',
   },
 ]
 

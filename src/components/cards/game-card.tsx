@@ -24,14 +24,22 @@ export function GameCard({ game, index = 0 }: { game: Game; index?: number }) {
               <h3 className="font-heading text-base font-semibold leading-tight group-hover:text-primary transition-colors duration-200">
                 {game.title}
               </h3>
-              <Badge variant="primary" className="text-[10px] px-1.5 py-0">{game.genre}</Badge>
+              {game.status === 'upcoming' ? (
+                <Badge variant="accent" className="text-[10px] px-1.5 py-0">Coming Soon</Badge>
+              ) : (
+                <Badge variant="primary" className="text-[10px] px-1.5 py-0">{game.genre}</Badge>
+              )}
             </div>
             <p className="text-sm text-muted-foreground/80 line-clamp-2 leading-relaxed">{game.description}</p>
             <div className="flex items-center justify-between pt-1">
-              <div className="flex items-center gap-1 text-sm">
-                <Star className="h-3.5 w-3.5 fill-warning text-warning" />
-                <span className="font-medium text-xs">{game.rating}</span>
-              </div>
+              {game.status === 'upcoming' ? (
+                <span className="text-xs text-muted-foreground">Coming Soon</span>
+              ) : (
+                <div className="flex items-center gap-1 text-sm">
+                  <Star className="h-3.5 w-3.5 fill-warning text-warning" />
+                  <span className="font-medium text-xs">{game.rating}</span>
+                </div>
+              )}
               <span className="text-xs font-medium text-primary opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center gap-0.5 group-hover:gap-1.5">
                 View details <ArrowRight className="h-3 w-3" />
               </span>
