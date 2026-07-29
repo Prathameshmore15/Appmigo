@@ -22,9 +22,6 @@ const legalLinks = [
 
 const socialLinks = [
   { label: 'LinkedIn', href: company.social.linkedin },
-  { label: 'Facebook', href: company.social.facebook },
-  { label: 'Instagram', href: company.social.instagram },
-  { label: 'Twitter', href: company.social.twitter },
 ]
 
 export function Footer() {
