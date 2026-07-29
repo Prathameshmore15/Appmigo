@@ -53,8 +53,8 @@ export default function AboutPage() {
       <section className="py-24 sm:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <p className="text-xs font-semibold text-primary tracking-widest uppercase mb-3">Our Values</p>
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold tracking-tight">What drives us</h2>
+            <p className="text-xs font-semibold text-primary tracking-widest uppercase mb-3">My Values</p>
+            <h2 className="font-heading text-3xl sm:text-4xl font-bold tracking-tight">What drives me</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {company.values.map((value, i) => {
@@ -83,8 +83,8 @@ export default function AboutPage() {
       <section className="py-24 sm:py-28 bg-muted/50 border-y">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <p className="text-xs font-semibold text-primary tracking-widest uppercase mb-3">Locations</p>
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold tracking-tight">Our offices</h2>
+            <p className="text-xs font-semibold text-primary tracking-widest uppercase mb-3">Location</p>
+            <h2 className="font-heading text-3xl sm:text-4xl font-bold tracking-tight">Based in</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {company.offices.map((office) => (

@@ -1,12 +1,13 @@
 export const company = {
   name: 'Appmigo',
   tagline: 'Simple Mobile Experiences',
-  description: 'Appmigo is a mobile game developer focused on creating engaging puzzle and brain-training games that millions of players love.',
+  developer: 'Prathamesh More',
+  description: 'Appmigo is an independent mobile game studio founded by Prathamesh More, focused on creating engaging puzzle and brain-training games.',
   founded: 2024,
   stats: [
-    { value: '10M+', label: 'Downloads' },
-    { value: '50+', label: 'Team Members' },
-    { value: '12', label: 'Games Published' },
+    { value: '10', label: 'Downloads' },
+    { value: '1', label: 'Developer' },
+    { value: '2', label: 'Games Published' },
     { value: '4.5', label: 'Avg. Rating' },
   ],
   values: [
@@ -16,33 +17,30 @@ export const company = {
       icon: 'Heart',
     },
     {
-      title: 'Data-Driven',
-      description: 'We measure everything to make informed decisions.',
-      icon: 'BarChart3',
+      title: 'Quality',
+      description: 'I never compromise on the quality of my games.',
+      icon: 'Star',
     },
     {
       title: 'Innovation',
-      description: 'We push boundaries to create unique gaming experiences.',
+      description: 'I push boundaries to create unique gaming experiences.',
       icon: 'Lightbulb',
     },
     {
-      title: 'Quality',
-      description: 'We never compromise on the quality of our games.',
-      icon: 'Star',
+      title: 'Transparency',
+      description: 'I believe in honest communication with my players.',
+      icon: 'BarChart3',
     },
   ],
   offices: [
     {
       city: 'Mumbai',
-      address: '123 Gaming Street, Andheri West',
+      address: 'Mumbai, Maharashtra',
       country: 'India',
     },
   ],
   social: {
-    linkedin: '#',
-    facebook: '#',
-    instagram: '#',
-    twitter: '#',
+    linkedin: 'https://linkedin.com/in/prathamesh-more',
   },
 } as const
 

@@ -33,7 +33,7 @@ export default function Home() {
             </h1>
             <p className="mt-5 text-lg text-muted-foreground/80 max-w-md leading-relaxed">
               <AnimatedText
-                text="Appmigo creates mobile games that bring joy and mental stimulation to millions of players worldwide."
+                text="Appmigo creates mobile games that bring joy and mental stimulation to players worldwide."
                 variant="wave"
                 delay={500}
               />
@@ -41,7 +41,7 @@ export default function Home() {
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <Link href="/games">
                 <Button size="lg" className="cursor-pointer gap-2">
-                  View our games
+                  View my games
                   <ChevronRight className="h-4 w-4" />
                 </Button>
               </Link>
@@ -75,7 +75,7 @@ export default function Home() {
           <div className="flex items-end justify-between mb-12">
             <div>
               <p className="text-xs font-semibold text-primary tracking-widest uppercase mb-3">
-                <AnimatedText text="Our games" variant="typewriter" />
+                <AnimatedText text="My games" variant="typewriter" />
               </p>
               <h2 className="font-heading text-3xl sm:text-4xl font-bold tracking-tight">
                 <AnimatedText text="Featured titles" variant="typewriter" />
@@ -153,7 +153,7 @@ export default function Home() {
             <AnimatedText text="Ready to play?" variant="typewriter" />
           </h2>
           <p className="mt-4 text-muted-foreground/80 max-w-md mx-auto">
-            <AnimatedText text="Download our games and join millions of players worldwide." variant="wave" />
+            <AnimatedText text="Download my games and join players worldwide." variant="wave" />
           </p>
           <div className="mt-10">
             <Link href="/games">

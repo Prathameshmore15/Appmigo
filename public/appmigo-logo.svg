@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 180" fill="none">
+  <defs>
+    <clipPath id="box-clip">
+      <rect x="120" y="10" width="160" height="160" rx="40" />
+    </clipPath>
+  </defs>
+
+  <!-- Rounded square -->
+  <rect x="120" y="10" width="160" height="160" rx="40" fill="white" stroke="#059669" stroke-width="1.5" />
+
+  <!-- A monogram -->
+  <g clip-path="url(#box-clip)">
+    <!-- Left stroke -->
+    <polygon points="194,35 140,150 165,150 200,45" fill="#059669" />
+    <!-- Right stroke -->
+    <polygon points="206,35 235,150 260,150 200,45" fill="#059669" />
+    <!-- Crossbar (gold) -->
+    <rect x="155" y="87" width="90" height="12" rx="4" fill="#B8860B" />
+    <!-- Play triangle -->
+    <polygon points="194,52 194,68 207,60" fill="#B8860B" />
+  </g>
+
+  <!-- Wordmark -->
+  <text x="200" y="210" text-anchor="middle" font-family="'Inter', 'Segoe UI', sans-serif" font-size="28" font-weight="700" fill="#1A1A1A" letter-spacing="-0.5">appmigo</text>
+  <text x="200" y="230" text-anchor="middle" font-family="'Inter', 'Segoe UI', sans-serif" font-size="12" fill="#787872" letter-spacing="1.5">GAME STUDIO</text>
+</svg>
