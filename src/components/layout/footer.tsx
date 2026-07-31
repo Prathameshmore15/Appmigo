@@ -20,10 +20,6 @@ const legalLinks = [
   { label: 'Account Deletion', href: '/account-deletion' },
 ]
 
-const socialLinks = [
-  { label: 'LinkedIn', href: company.social.linkedin },
-]
-
 export function Footer() {
   return (
     <footer className="border-t bg-muted/30">
@@ -40,18 +36,6 @@ export function Footer() {
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
               {company.tagline}
             </p>
-            <div className="flex items-center gap-3 mt-4">
-              {socialLinks.map(link => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                  aria-label={link.label}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
           </div>
           <div>
             <h4 className="font-heading text-sm font-semibold mb-3">Navigation</h4>

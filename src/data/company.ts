@@ -39,9 +39,6 @@ export const company = {
       country: 'India',
     },
   ],
-  social: {
-    linkedin: 'https://linkedin.com/in/prathamesh-more',
-  },
 } as const
 
 export type Company = typeof company
