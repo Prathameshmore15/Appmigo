@@ -2,8 +2,8 @@ export const company = {
   name: 'Appmigo',
   tagline: 'Simple Mobile Experiences',
   developer: 'Prathamesh More',
-  description: 'Appmigo is an independent mobile game studio dedicated to crafting engaging brain-training and casual puzzle experiences for Android. Founded in 2024 by Prathamesh More, we combine thoughtful game design with seamless mechanics to deliver games that challenge the mind and delight players worldwide.',
-  founded: 2024,
+  description: 'Appmigo is an independent mobile game studio dedicated to crafting engaging brain-training and casual puzzle experiences for Android. Founded in 2026 by Prathamesh More, we combine thoughtful game design with seamless mechanics to deliver games that challenge the mind and delight players worldwide.',
+  founded: 2026,
   stats: [
     { value: '10', label: 'Downloads' },
     { value: '1', label: 'Developer' },
