@@ -25,7 +25,7 @@ export const games: Game[] = [
     genre: 'Puzzle',
     rating: 4.5,
     version: '1.0.7',
-    releaseDate: '2024',
+    releaseDate: '2026',
     developer: 'Appmigo',
     features: ['5 Game Modes', '3 Difficulty Levels', '12+ Icon Packs', '28+ Achievements', 'Offline Play', 'Dark/Light Theme'],
     imageUrl: '/images/game-speed-memory.svg',

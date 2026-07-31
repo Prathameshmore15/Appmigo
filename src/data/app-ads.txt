@@ -1,7 +1,7 @@
 # app-ads.txt - https://iabtechlab.com/app-ads-txt/
 # Owner: Prathamesh More (Appmigo)
 # Website: https://appmigo.vercel.app
-# Last Updated: 2024
+# Last Updated: 2026
 
 # ironSource
 # Replace YOUR_PUBLISHER_ID with your ironSource Publisher ID
