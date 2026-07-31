@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { Send, Bot, User, RefreshCw } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { AnimatedText } from '@/components/ui/animated-text'
+import { faqs, searchFAQs } from '@/data/faqs'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -17,6 +18,46 @@ const suggestions = [
   'How do I delete my account?',
   'I didn\'t receive my purchase',
 ]
+
+const keywordResponses: Record<string, string> = {
+  hello: 'Hello! Welcome to Appmigo support. How can I help you today?',
+  hi: 'Hi there! I\'m here to help with any questions about our games.',
+  thanks: 'You\'re welcome! Let me know if you need anything else.',
+  thank: 'Happy to help! Is there anything else you\'d like to know?',
+  game: 'We currently have Speed Memory Challenge available, with Tile Debt coming soon. What would you like to know about our games?',
+  download: 'You can download our games from Google Play Store. Search for "Appmigo" or visit the direct links on our Games page.',
+  play: 'Our games are available on Android. Download them from Google Play Store to start playing!',
+  contact: 'You can reach us through our contact form, email at support@appmigo.com, or use this AI chat for quick answers.',
+  support: 'I can help with FAQs and general questions. For specific issues, you can also submit a bug report or contact our support team directly.',
+  refund: 'To request a refund, visit play.google.com/store/account/orderhistory within 48 hours of purchase. For issues beyond this window, contact our support team.',
+  crash: 'If your game is crashing, try: 1) Restart your device 2) Update to the latest version 3) Clear the game cache 4) Check device compatibility. If issues persist, submit a bug report.',
+  bug: 'Found a bug? Please submit a bug report with details about the issue, your device model, and OS version. This helps us fix it faster!',
+  account: 'For account-related questions: To delete your account, visit our Account Deletion page. We process requests within 30 days per GDPR.',
+  progress: 'To reset game progress, go to Settings > Game > Reset Progress. Note that this is permanent and cannot be undone.',
+  offline: 'Yes! Most Appmigo games support offline play for core features. Online features like leaderboards require internet.',
+  update: 'To update games, enable auto-updates in Google Play settings, or manually check for updates in the Play Store.',
+  data: 'We only collect essential data: game progress, device type, and anonymized analytics. No personal info unless you provide it voluntarily.',
+}
+
+function getAIResponse(userMessage: string): string {
+  const lowerMessage = userMessage.toLowerCase()
+
+  // Check keyword responses first
+  for (const [keyword, response] of Object.entries(keywordResponses)) {
+    if (lowerMessage.includes(keyword)) {
+      return response
+    }
+  }
+
+  // Search FAQs
+  const matchingFAQs = searchFAQs(userMessage)
+  if (matchingFAQs.length > 0) {
+    return matchingFAQs[0].answer
+  }
+
+  // Default response
+  return 'I\'m not sure I understand that question. Could you rephrase it? For specific account or technical issues, please submit a bug report or contact our support team directly.'
+}
 
 export default function AIChatPage() {
   const [messages, setMessages] = useState<Message[]>([
@@ -37,13 +78,12 @@ export default function AIChatPage() {
     setMessages(prev => [...prev, { role: 'user', content: userMsg }])
     setLoading(true)
 
+    // Simulate faster response time (300ms instead of 1000ms)
     setTimeout(() => {
-      setMessages(prev => [...prev, {
-        role: 'assistant',
-        content: 'Thanks for your message! For specific account or technical issues, please submit a bug report or contact our support team directly. I\'m here to help with general questions and guidance!',
-      }])
+      const response = getAIResponse(userMsg)
+      setMessages(prev => [...prev, { role: 'assistant', content: response }])
       setLoading(false)
-    }, 1000)
+    }, 300)
   }
 
   return (
