@@ -18,17 +18,17 @@ export const company = {
     },
     {
       title: 'Quality',
-      description: 'I never compromise on the quality of my games.',
+      description: 'We never compromise on the quality of our games.',
       icon: 'Star',
     },
     {
       title: 'Innovation',
-      description: 'I push boundaries to create unique gaming experiences.',
+      description: 'We push boundaries to create unique gaming experiences.',
       icon: 'Lightbulb',
     },
     {
       title: 'Transparency',
-      description: 'I believe in honest communication with my players.',
+      description: 'We believe in honest communication with our players.',
       icon: 'BarChart3',
     },
   ],
