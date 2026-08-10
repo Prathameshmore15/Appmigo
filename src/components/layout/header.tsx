@@ -28,7 +28,7 @@ const navItems = [
   {
     label: 'Legal',
     children: [
-      { label: 'Privacy Policy', href: '/privacy', icon: Shield },
+      { label: 'Privacy Policy', href: '/privacy-policy', icon: Shield },
       { label: 'Terms & Conditions', href: '/terms', icon: FileText },
       { label: 'Account Deletion', href: '/account-deletion', icon: Trash2 },
     ],
