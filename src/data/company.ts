@@ -5,7 +5,7 @@ export const company = {
   description: 'Appmigo is an independent mobile game studio dedicated to crafting engaging brain-training and casual puzzle experiences for Android. Founded in 2026 by Prathamesh More, we combine thoughtful game design with seamless mechanics to deliver games that challenge the mind and delight players worldwide.',
   founded: 2026,
   stats: [
-    { value: '10', label: 'Downloads' },
+    { value: '50', label: 'Downloads' },
     { value: '1', label: 'Developer' },
     { value: '2', label: 'Games Published' },
     { value: '4.5', label: 'Avg. Rating' },
