@@ -8,6 +8,7 @@ import { newsArticles } from '@/data/news'
 import { AnimatedText } from '@/components/ui/animated-text'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { formatDate } from '@/lib/utils'
 
 const categoryColors = {
   announcement: 'primary',
@@ -51,7 +52,7 @@ export default function NewsArticlePage() {
               </Badge>
               <span className="flex items-center gap-1 text-xs text-muted-foreground">
                 <Calendar className="h-3 w-3" />
-                {new Date(article.publishedAt).toLocaleDateString()}
+                {formatDate(article.publishedAt)}
               </span>
             </div>
             <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tighter leading-[1.05]">

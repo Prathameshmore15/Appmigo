@@ -9,6 +9,7 @@ import { AnimatedText } from '@/components/ui/animated-text'
 import { games } from '@/data/games'
 import { company } from '@/data/company'
 import { newsArticles } from '@/data/news'
+import { formatDate } from '@/lib/utils'
 
 const latestGames = games.slice(0, 4)
 const latestNews = newsArticles.slice(0, 2)
@@ -129,7 +130,7 @@ export default function Home() {
                     <div className="flex items-center gap-2 mb-4">
                       <span className="flex items-center gap-1 text-xs text-muted-foreground">
                         <Calendar className="h-3 w-3" />
-                        {new Date(article.publishedAt).toLocaleDateString()}
+                        {formatDate(article.publishedAt)}
                       </span>
                     </div>
                     <h3 className="font-heading text-lg font-semibold mb-2 group-hover:text-primary transition-colors">

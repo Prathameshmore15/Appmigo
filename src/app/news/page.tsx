@@ -6,6 +6,7 @@ import { Calendar, ArrowRight } from 'lucide-react'
 import { newsArticles } from '@/data/news'
 import { AnimatedText } from '@/components/ui/animated-text'
 import { Badge } from '@/components/ui/badge'
+import { formatDate } from '@/lib/utils'
 
 const categoryColors = {
   announcement: 'primary',
@@ -55,7 +56,7 @@ export default function NewsPage() {
                       </Badge>
                       <span className="flex items-center gap-1 text-xs text-muted-foreground">
                         <Calendar className="h-3 w-3" />
-                        {new Date(article.publishedAt).toLocaleDateString()}
+                        {formatDate(article.publishedAt)}
                       </span>
                     </div>
                     <h2 className="font-heading text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
