@@ -178,6 +178,11 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
+select option {
+  background: var(--color-card);
+  color: var(--color-foreground);
+}
+
 /* ── Stagger text animation ── */
 .stagger-word {
   opacity: 0;
