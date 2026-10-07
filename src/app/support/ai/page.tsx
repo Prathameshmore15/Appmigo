@@ -4,8 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Send, Bot, User, RefreshCw } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { AnimatedText } from '@/components/ui/animated-text'
-import { faqs, searchFAQs } from '@/data/faqs'
+import { searchFAQs } from '@/data/faqs'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -13,10 +12,10 @@ interface Message {
 }
 
 const suggestions = [
-  'How do I reset my game progress?',
-  'My game is crashing',
-  'How do I delete my account?',
-  'I didn\'t receive my purchase',
+  'How do I restore progress?',
+  'My game crashed',
+  'How do I report a bug?',
+  'How do updates work?',
 ]
 
 const keywordResponses: Record<string, string> = {
@@ -71,9 +70,10 @@ export default function AIChatPage() {
     endRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
 
-  const handleSend = async () => {
-    if (!input.trim() || loading) return
-    const userMsg = input.trim()
+  const handleSend = async (override?: string) => {
+    const raw = override ?? input
+    if (!raw.trim() || loading) return
+    const userMsg = raw.trim()
     setInput('')
     setMessages(prev => [...prev, { role: 'user', content: userMsg }])
     setLoading(true)
@@ -87,39 +87,51 @@ export default function AIChatPage() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+    <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }} className="flex flex-col items-center">
-        <div className="text-center mb-10 w-full">
-          <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-primary/10 text-primary backdrop-blur-sm mb-5">
-            <Bot className="h-8 w-8" />
+        <div className="text-center mb-8 w-full">
+          <div className="relative mx-auto mb-5 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+            <span className="absolute inset-0 rounded-2xl bg-primary/10 blur-lg" aria-hidden="true" />
+            <Bot className="relative h-8 w-8" />
           </div>
-          <h1 className="font-heading text-4xl sm:text-5xl font-bold tracking-tight">
-            <AnimatedText text="AI Assistant" variant="typewriter" />
+          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-primary">✦ Appmigo AI · rule-based</p>
+          <h1 className="mt-2 font-heading text-4xl sm:text-5xl font-bold tracking-tight">
+            AI Assistant
           </h1>
-          <p className="mt-3 text-muted-foreground">Get instant answers to your questions</p>
+          <p className="mt-3 text-muted-foreground">Instant answers from FAQs — no account needed</p>
         </div>
 
-        <div className="rounded-2xl border bg-card/95 backdrop-blur-sm shadow-xl overflow-hidden flex flex-col h-[600px] w-full">
+        <div className="rounded-2xl border bg-card/95 backdrop-blur-sm shadow-xl overflow-hidden flex flex-col h-[600px] w-full" role="log" aria-label="Support chat" aria-live="polite">
+          <div className="flex items-center gap-2 border-b border-border px-4 py-2.5">
+            <span className="h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">Online · replies instantly</p>
+          </div>
           <div className="flex-1 overflow-y-auto p-4 space-y-4">
             {messages.map((msg, i) => (
-              <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25 }}
+                className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+              >
                 <div className={`flex items-start gap-2.5 max-w-[85%] ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}>
                   <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${msg.role === 'assistant' ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground'}`}>
                     {msg.role === 'assistant' ? <Bot className="h-4 w-4" /> : <User className="h-4 w-4" />}
                   </div>
-                  <div className={`rounded-2xl px-4 py-3 text-sm leading-relaxed ${msg.role === 'assistant' ? 'bg-muted' : 'bg-primary text-on-primary'}`}>
+                  <div className={`rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-sm ${msg.role === 'assistant' ? 'rounded-tl-md bg-muted' : 'rounded-tr-md bg-primary text-on-primary'}`}>
                     {msg.content}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
             {loading && (
-              <div className="flex justify-start">
+              <div className="flex justify-start" aria-label="Assistant is typing">
                 <div className="flex items-start gap-2.5">
                   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
                     <Bot className="h-4 w-4" />
                   </div>
-                  <div className="rounded-2xl px-4 py-3 bg-muted">
+                  <div className="rounded-2xl rounded-tl-md px-4 py-3.5 bg-muted">
                     <div className="flex gap-1">
                       <div className="h-2 w-2 rounded-full bg-muted-foreground/40 animate-bounce" style={{ animationDelay: '0ms' }} />
                       <div className="h-2 w-2 rounded-full bg-muted-foreground/40 animate-bounce" style={{ animationDelay: '150ms' }} />
@@ -133,14 +145,16 @@ export default function AIChatPage() {
           </div>
 
           {messages.length === 1 && (
-            <div className="px-4 pb-4">
+            <div className="px-4 pb-3">
               <p className="text-xs text-muted-foreground mb-2 text-center">Try asking:</p>
               <div className="flex flex-wrap gap-2 justify-center">
                 {suggestions.map(s => (
                   <button
                     key={s}
-                    onClick={() => { setInput(s); handleSend() }}
-                    className="text-xs rounded-full border px-3 py-1.5 text-muted-foreground hover:bg-muted transition-colors cursor-pointer"
+                    type="button"
+                    disabled={loading}
+                    onClick={() => handleSend(s)}
+                    className="text-xs rounded-full border px-3 py-2 text-muted-foreground transition-all hover:-translate-y-px hover:border-primary/40 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {s}
                   </button>
@@ -151,14 +165,17 @@ export default function AIChatPage() {
 
           <div className="border-t p-4 bg-card/50">
             <form onSubmit={e => { e.preventDefault(); handleSend() }} className="flex items-center gap-2">
+              <label htmlFor="ai-input" className="sr-only">Ask a support question</label>
               <input
+                id="ai-input"
                 value={input}
                 onChange={e => setInput(e.target.value)}
-                placeholder="Type your question..."
-                className="flex-1 h-11 rounded-xl border bg-background px-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                placeholder="Type your question…"
+                className="flex-1 h-11 rounded-xl border bg-background px-4 text-sm transition-shadow placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
                 disabled={loading}
+                autoComplete="off"
               />
-              <Button type="submit" size="icon" disabled={loading || !input.trim()} className="h-11 w-11 shrink-0 cursor-pointer rounded-xl">
+              <Button type="submit" size="icon" disabled={loading || !input.trim()} aria-label="Send message" className="h-11 w-11 shrink-0 cursor-pointer rounded-xl">
                 {loading ? <RefreshCw className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
               </Button>
             </form>
@@ -166,7 +183,7 @@ export default function AIChatPage() {
         </div>
 
         <p className="mt-4 text-xs text-center text-muted-foreground pb-20 lg:pb-0">
-          AI responses are generated by an automated system. For urgent issues, please contact our support team.
+          Automated answers from our FAQ. For urgent issues, please contact our support team.
         </p>
       </motion.div>
     </div>

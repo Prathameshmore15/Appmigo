@@ -5,7 +5,6 @@ import { useParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { Calendar, ArrowLeft } from 'lucide-react'
 import { newsArticles } from '@/data/news'
-import { AnimatedText } from '@/components/ui/animated-text'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { formatDate } from '@/lib/utils'
@@ -35,14 +34,15 @@ export default function NewsArticlePage() {
     <div className="flex flex-col">
       {/* Hero */}
       <section className="relative overflow-hidden border-b">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] via-transparent to-accent/[0.03]" />
-        <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+        <div className="hero-grid hero-fade-mask absolute inset-0" aria-hidden="true" />
+        <div className="hero-atmosphere absolute inset-0" aria-hidden="true" />
+        <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
           <motion.div
-            initial={{ opacity: 0, y: 32 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.6 }}
           >
-            <Link href="/news" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-6">
+            <Link href="/news" className="link-underline mb-6 inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">
               <ArrowLeft className="h-4 w-4" />
               Back to news
             </Link>
@@ -50,14 +50,15 @@ export default function NewsArticlePage() {
               <Badge variant={categoryColors[article.category]} className="text-xs">
                 {article.category}
               </Badge>
-              <span className="flex items-center gap-1 text-xs text-muted-foreground">
+              <span className="flex items-center gap-1 font-mono text-xs text-muted-foreground">
                 <Calendar className="h-3 w-3" />
                 {formatDate(article.publishedAt)}
               </span>
             </div>
             <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tighter leading-[1.05]">
-              <AnimatedText text={article.title} variant="typewriter" />
+              {article.title}
             </h1>
+            <p className="mt-4 max-w-2xl text-lg text-muted-foreground">{article.excerpt}</p>
           </motion.div>
         </div>
       </section>

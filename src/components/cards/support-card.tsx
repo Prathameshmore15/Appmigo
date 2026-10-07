@@ -25,7 +25,7 @@ export function SupportCard({ icon: Icon, title, description, href, cta }: Suppo
             <div className="min-w-0 flex-1">
               <h3 className="font-heading text-base font-semibold mb-1">{title}</h3>
               <p className="text-sm text-muted-foreground/80 leading-relaxed">{description}</p>
-              <span className="inline-flex items-center gap-1 text-xs font-medium text-primary mt-2.5 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:gap-1.5">
+              <span className="inline-flex items-center gap-1 text-xs font-medium text-primary mt-2.5 transition-all duration-300 group-hover:gap-1.5">
                 {cta} <ArrowRight className="h-3 w-3" />
               </span>
             </div>

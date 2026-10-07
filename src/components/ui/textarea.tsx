@@ -18,10 +18,10 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           ref={ref}
           id={textareaId}
           className={cn(
-            'flex min-h-[120px] w-full rounded-md border bg-background px-3 py-2 text-sm placeholder:text-muted-foreground',
-            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1',
+            'flex min-h-[120px] w-full rounded-lg border bg-background px-3.5 py-2.5 text-sm shadow-sm transition-all duration-200 placeholder:text-muted-foreground',
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:border-primary/50',
             'disabled:cursor-not-allowed disabled:opacity-50 resize-y',
-            error ? 'border-destructive' : 'border-border',
+            error ? 'border-destructive focus-visible:ring-destructive/40' : 'border-border hover:border-foreground/20',
             className
           )}
           aria-invalid={!!error}

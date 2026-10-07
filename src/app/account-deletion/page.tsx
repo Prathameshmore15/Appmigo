@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -30,6 +30,7 @@ const reasons = [
 
 export default function AccountDeletionPage() {
   const [submitted, setSubmitted] = useState(false)
+  const uid = useId().replace(/[^A-Za-z0-9]/g, '').slice(0, 6).toUpperCase()
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<DeletionForm>({
     resolver: zodResolver(deletionSchema),
   })
@@ -42,16 +43,17 @@ export default function AccountDeletionPage() {
   if (submitted) {
     return (
       <div className="mx-auto max-w-lg px-4 sm:px-6 lg:px-8 py-20 text-center">
-        <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="space-y-4">
-          <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-accent/10 text-accent">
+        <motion.div initial={{ scale: 0.94, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }} className="space-y-4">
+          <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 text-primary">
             <CheckCircle className="h-8 w-8" />
           </div>
-          <h1 className="font-heading text-2xl font-bold">Deletion Request Submitted</h1>
+          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-primary">Request received</p>
+          <h1 className="font-heading text-2xl font-bold">Deletion request submitted</h1>
           <p className="text-muted-foreground">
-            We'll process your request within 30 days as required by GDPR. You'll receive a confirmation email.
+            We&apos;ll process your request within 30 days as required by GDPR. You&apos;ll receive a confirmation email.
           </p>
-          <div className="inline-block rounded-lg bg-muted px-4 py-2 text-sm font-mono text-muted-foreground">
-            Reference: DEL-{Date.now().toString(36).toUpperCase()}
+          <div className="inline-block rounded-lg border bg-muted px-4 py-2 text-sm font-mono text-muted-foreground">
+            Reference: DEL-{uid}
           </div>
           <p className="text-xs text-muted-foreground">
             You can also request deletion by emailing privacy@appmigo.com
@@ -65,9 +67,10 @@ export default function AccountDeletionPage() {
   }
 
   return (
-    <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+    <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}>
-        <h1 className="font-heading text-4xl sm:text-5xl font-bold tracking-tight">Account Deletion</h1>
+        <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-primary">Privacy</p>
+        <h1 className="mt-2 font-heading text-4xl sm:text-5xl font-bold tracking-tight">Account deletion</h1>
         <p className="mt-3 text-muted-foreground">Request complete deletion of your account and associated data.</p>
       </motion.div>
 

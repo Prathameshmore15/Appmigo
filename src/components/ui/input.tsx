@@ -21,10 +21,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           id={inputId}
           className={cn(
-            'flex h-11 w-full rounded-md border bg-background px-3 py-2 text-sm placeholder:text-muted-foreground',
-            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1',
+            'flex h-11 w-full rounded-lg border bg-background px-3.5 py-2 text-sm shadow-sm transition-all duration-200 placeholder:text-muted-foreground',
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:border-primary/50',
             'disabled:cursor-not-allowed disabled:opacity-50',
-            error ? 'border-destructive' : 'border-border',
+            error ? 'border-destructive focus-visible:ring-destructive/40' : 'border-border hover:border-foreground/20',
             className
           )}
           aria-invalid={!!error}
@@ -32,7 +32,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         {error && (
-          <p id={`${inputId}-error`} className="text-sm text-destructive" role="alert">{error}</p>
+          <p id={`${inputId}-error`} className="animate-in text-sm text-destructive" role="alert">{error}</p>
         )}
         {helperText && !error && (
           <p id={`${inputId}-helper`} className="text-sm text-muted-foreground">{helperText}</p>

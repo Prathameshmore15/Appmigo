@@ -2,11 +2,11 @@ import { forwardRef, type ButtonHTMLAttributes } from 'react'
 import { cn } from '@/lib/utils'
 
 const variants = {
-  primary: 'bg-primary text-on-primary hover:bg-primary-hover active:bg-primary-active disabled:bg-primary-disabled disabled:opacity-50 shadow-sm hover:shadow-md hover:-translate-y-0.5',
-  secondary: 'bg-secondary text-on-secondary hover:brightness-90 active:brightness-75',
-  accent: 'bg-accent text-on-accent hover:bg-accent-hover active:brightness-90',
-  ghost: 'bg-transparent text-foreground hover:bg-muted active:bg-border/50',
-  destructive: 'bg-destructive text-destructive-foreground hover:brightness-90',
+  primary: 'bg-primary text-on-primary hover:bg-primary-hover active:bg-primary-active active:scale-[0.97] disabled:bg-primary-disabled disabled:opacity-50 shadow-sm hover:shadow-md hover:-translate-y-px',
+  secondary: 'bg-secondary text-on-secondary hover:brightness-95 active:brightness-90 active:scale-[0.97]',
+  accent: 'bg-accent text-on-accent hover:bg-accent-hover active:brightness-95 active:scale-[0.97]',
+  ghost: 'bg-transparent text-foreground hover:bg-muted active:bg-border/50 active:scale-[0.98]',
+  destructive: 'bg-destructive text-destructive-foreground hover:brightness-95 active:scale-[0.97]',
   link: 'text-primary underline-offset-4 hover:underline bg-transparent',
 }
 

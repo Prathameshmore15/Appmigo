@@ -26,25 +26,38 @@ export function Accordion({ items, className }: AccordionProps) {
           <div key={item.id}>
             <button
               onClick={() => setOpenId(isOpen ? null : item.id)}
-              className="flex w-full items-center justify-between px-6 py-4.5 text-left text-sm font-medium text-foreground hover:bg-muted/50 transition-colors duration-200 cursor-pointer"
+              onKeyDown={e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  setOpenId(isOpen ? null : item.id)
+                }
+              }}
+              className="flex w-full cursor-pointer items-center justify-between px-6 py-4 text-left text-sm font-medium text-foreground transition-colors duration-200 hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
               aria-expanded={isOpen}
+              aria-controls={`accordion-${item.id}`}
+              id={`accordion-btn-${item.id}`}
             >
               <span className="pr-4">{item.title}</span>
               <ChevronDown
                 className={cn(
                   'h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-300',
-                  isOpen && 'rotate-180'
+                  isOpen && 'rotate-180 text-primary'
                 )}
               />
             </button>
             <div
+              id={`accordion-${item.id}`}
+              role="region"
+              aria-labelledby={`accordion-btn-${item.id}`}
               className={cn(
-                'overflow-hidden transition-all duration-300 ease-out',
-                isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+                'grid transition-all duration-300 ease-out',
+                isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
               )}
             >
-              <div className="px-6 pb-5 text-sm text-muted-foreground leading-relaxed">
-                {item.content}
+              <div className="overflow-hidden">
+                <div className="px-6 pb-5 text-sm leading-relaxed text-muted-foreground">
+                  {item.content}
+                </div>
               </div>
             </div>
           </div>

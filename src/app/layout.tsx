@@ -5,6 +5,8 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { MobileNav, Fab } from "@/components/layout/mobile-nav";
 import { ScrollRestoration } from "@/components/scroll-restoration";
+import { CursorGlow } from "@/components/motion/cursor-glow";
+import { PageTransition } from "@/components/motion/page-transition";
 import "./globals.css";
 
 const sora = Sora({
@@ -82,16 +84,18 @@ export default function RootLayout({
       <head>
         <meta name="color-scheme" content="light dark" />
       </head>
-      <body className="min-h-screen flex flex-col antialiased">
+      <body className="min-h-screen flex flex-col antialiased" id="cursor-glow-root">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
+          <CursorGlow />
+          <div className="cursor-glow-layer" aria-hidden="true" />
           <ScrollRestoration />
           <Header />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1"><PageTransition>{children}</PageTransition></main>
           <Footer />
           <MobileNav />
           <Fab />
