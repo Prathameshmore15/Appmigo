@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { GameShowcaseCard } from '@/components/game/game-showcase-card'
 import { Button } from '@/components/ui/button'
 import { SectionHeading } from '@/components/ui/section-heading'
+import { GeometricBackdrop } from '@/components/motion/geometric-backdrop'
 import { StaggerReveal, StaggerChild, ScrollReveal } from '@/components/motion/scroll-reveal'
 import { games } from '@/data/games'
 import { ArrowUpDown } from 'lucide-react'
@@ -18,7 +19,9 @@ export default function GamesPage() {
   })
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
+    <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
+      <GeometricBackdrop />
+      <div className="relative">
       <ScrollReveal>
         <SectionHeading
           eyebrow="Catalog"
@@ -64,6 +67,7 @@ export default function GamesPage() {
           ))}
         </StaggerReveal>
       )}
+      </div>
     </div>
   )
 }

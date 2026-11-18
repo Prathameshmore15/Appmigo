@@ -244,6 +244,11 @@ select option {
   -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 20%, black 30%, transparent 75%);
 }
 
+.geo-fade-mask {
+  mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, black 25%, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, black 25%, transparent 72%);
+}
+
 /* ── Animated link underline ── */
 .link-underline {
   position: relative;
@@ -299,7 +304,9 @@ select option {
   html { scroll-behavior: auto; }
   .float-slow,
   .diamond-pulse,
-  .stagger-word {
+  .stagger-word,
+  .animate-pulse,
+  .animate-bounce {
     animation: none;
   }
   .stagger-word { opacity: 1; }

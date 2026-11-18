@@ -22,6 +22,8 @@ const sections = [
     'Appmigo shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our games or services. Our total liability shall not exceed the amount you paid us in the 12 months preceding the claim.' },
   { id: 'governing-law', title: 'Governing Law', content:
     'These terms shall be governed by and construed in accordance with the laws. Any disputes shall be resolved through amicable negotiation first. If no resolution is reached, disputes will be settled in the courts.' },
+  { id: 'trader', title: 'Trader Status & Commercial Activity', content:
+    'Appmigo (Prathamesh More) is a trader for the purposes of applicable digital-services and consumer-transparency rules (including the EU Digital Services Act where relevant).\n\nCommercial activity: Our games are monetized with in-app advertising (and, where enabled, in-app purchases via Google Play). Publishing and operating these games is carried out as a commercial activity.\n\nTrader identity:\n• Name: Prathamesh More (Appmigo)\n• Location: Mumbai, Maharashtra, India\n• Email: support@appmigo.com\n• Contact form: https://appmigo.vercel.app/contact\n\nThis disclosure applies to the Appmigo website and our published games, including Speed Memory Challenge and Tile Debt.' },
   { id: 'contact', title: 'Contact', content:
     'For questions about these terms, please contact us at:\n\n• Email: support@appmigo.com\n• Contact Form: /contact' },
 ]
